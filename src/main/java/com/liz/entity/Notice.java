@@ -2,7 +2,7 @@ package com.liz.entity;
 
 //这是系统公告的实体类 id title content time
 public class Notice {
-    private int id;
+    private Integer id;
     private String title;
     private String content;
     private String time;
@@ -11,7 +11,7 @@ public class Notice {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

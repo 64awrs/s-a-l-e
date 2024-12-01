@@ -1,27 +1,59 @@
 package com.liz.service;
 
+import cn.hutool.core.date.DateUtil;
 import com.liz.entity.Notice;
 import com.liz.mapper.NoticeMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 
+import java.util.List;
+
+/**
+ * 系统公告业务处理
+ **/
 @Service
 public class NoticeService {
+
     @Resource
     private NoticeMapper noticeMapper;
 
-    public void add(String title, String content) {
-        //处理异常
-        Notice dbNotice = noticeMapper.selectByUsername();
-        if (ObjectUtils.isNull(dbNotice)) {
-            throw new RuntimeException("公告不存在");
-        }
-
-        // 调用Mapper层的方法，将公告信息添加到数据库中
-        noticeMapper.add(title, content);
-
-
+    /**
+     * 新增
+     */
+    public void add(Notice notice) {
+        notice.setTime(DateUtil.now());  // 默认发布时间是当前的最新的时间
+        noticeMapper.insert(notice);
     }
+
+    /**
+     * 删除
+     */
+    public void deleteById(Integer id) {
+        noticeMapper.deleteById(id);
+    }
+
+    /**
+     * 修改
+     */
+    public void updateById(Notice notice) {
+        noticeMapper.updateById(notice);
+    }
+
+    /**
+     * 根据ID查询
+     */
+    public Notice selectById(Integer id) {
+        return noticeMapper.selectById(id);
+    }
+
+    /**
+     * 查询所有
+     */
+    public List<Notice> selectAll(Notice notice) {
+        return noticeMapper.selectAll(notice);
+    }
+
 
 }

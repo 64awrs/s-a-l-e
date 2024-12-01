@@ -1,23 +1,43 @@
 package com.liz.mapper;
 
-
 import com.liz.entity.Notice;
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
 
-public class NoticeMapper {
-    //开发增删改查
-    int inset(Notice notice);
-    @Delete("delete from notice where id=#{id}")
-    int delete(int id);
+/**
+ * 操作notice相关数据接口
+*/
+@Mapper
+public interface NoticeMapper {
 
-    //根据id查询
-    @Select("select * from notice where id=#{id}")
-    Notice selectById(int id);
+    /**
+      * 新增
+    */
+    int insert(Notice notice);
 
-    //查询所有
-    List<Notice> selectAll();
+    /**
+      * 删除
+    */
+    @Delete("delete from notice where id = #{id}")
+    int deleteById(Integer id);
 
+    /**
+      * 修改
+    */
+    int updateById(Notice notice);
+
+    /**
+      * 根据ID查询
+    */
+    @Select("select * from notice where id = #{id}")
+    Notice selectById(Integer id);
+
+    /**
+      * 查询所有
+    */
+    List<Notice> selectAll(Notice notice);
 
 }
