@@ -3,8 +3,6 @@ package com.liz.service;
 import cn.hutool.core.date.DateUtil;
 import com.liz.entity.Notice;
 import com.liz.mapper.NoticeMapper;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

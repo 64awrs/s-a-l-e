@@ -3,7 +3,6 @@ package com.liz.controller;
 import com.liz.config.Result;
 import com.liz.entity.Notice;
 import com.liz.service.NoticeService;
-import com.github.pagehelper.PageInfo;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
