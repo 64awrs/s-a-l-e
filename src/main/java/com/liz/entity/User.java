@@ -18,7 +18,7 @@ private String avatar;
 // 用户状态
 private String status;
 // 用户联系人
-private List<Contacts> contacts;
+private String contacts;
 
 // 用户简介
 private String brief;
@@ -72,13 +72,14 @@ public int getId() {
         this.status = status;
     }
 
-    public List<Contacts> getContacts() {
+    public String getContacts() {
         return contacts;
     }
 
-    public void setContacts(List<Contacts> contacts) {
+    public void setContacts(String contacts) {
         this.contacts = contacts;
     }
+
     public String getBrief() {
         return brief;
     }

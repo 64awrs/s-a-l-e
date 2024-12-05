@@ -3,6 +3,7 @@ package com.liz.controller;
 import com.liz.config.Result;
 import com.liz.entity.Notice;
 import com.liz.service.NoticeService;
+import com.github.pagehelper.PageInfo;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,5 +64,15 @@ public class NoticeController {
         return Result.success(list);
     }
 
+    /**
+     * 分页查询
+     */
+    @GetMapping("/selectPage")
+    public Result selectPage(Notice notice,
+                             @RequestParam(defaultValue = "1") Integer pageNum,
+                             @RequestParam(defaultValue = "10") Integer pageSize) {
+        PageInfo<Notice> page = noticeService.selectPage(notice, pageNum, pageSize);
+        return Result.success(page);
+    }
 
 }

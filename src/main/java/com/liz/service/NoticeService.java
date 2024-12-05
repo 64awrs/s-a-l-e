@@ -1,6 +1,8 @@
 package com.liz.service;
 
 import cn.hutool.core.date.DateUtil;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.liz.entity.Notice;
 import com.liz.mapper.NoticeMapper;
 import jakarta.annotation.Resource;
@@ -53,5 +55,12 @@ public class NoticeService {
         return noticeMapper.selectAll(notice);
     }
 
-
+    /**
+     * 分页查询
+     */
+    public PageInfo<Notice> selectPage(Notice notice, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<Notice> list = noticeMapper.selectAll(notice);
+        return PageInfo.of(list);
+    }
 }
